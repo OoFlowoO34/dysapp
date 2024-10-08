@@ -1,23 +1,4 @@
-<!-- <div x-data>
-
-  <template x-if="$store.layout.view === 'index'">
-    <div class="max-w-[1200px]">
-      Hello world
-    </div>
-  </template>
-  
-  <template x-if="$store.layout.view === 'contact'">
-    <div class="max-w-[1200px]">
-      <div class="bg-neutral rounded-box p-4 w-screen mx-auto flex flex-col gap-4" style="height: calc(100vh - 24px - 24px - 38px - 24px); max-width: calc(100% - 48px);">
-        <include src="src/views/contact/index.html"></include>
-      </div>
-    </div>
-  </template>
-</div> -->
-
-
-<div x-data="cardData()" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-  <!-- Boucle sur les données -->
+<div x-data="cardData()" class="p-4 bg-gray-100 grid grid-cols-1 md:grid-cols-3 gap-6">  
   <template x-for="item in data" :key="item.id">
     <div class="card w-full bg-white shadow-xl" :class="'border-' + item.color">
       <figure class="p-4">
@@ -29,8 +10,30 @@
       </div>
     </div>
   </template>
+  
+  <!-- Barre de navigation intégrée comme une "carte" supplémentaire -->
+  <div class="card w-full bg-transparent shadow-none flex items-center justify-center">
+    <nav class="w-full">
+      <div class="bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 p-1 rounded-full shadow-lg">
+        <div class="flex justify-between items-center bg-gray-800 rounded-full px-6 py-3">
+          <div class="flex items-center space-x-4">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/db72b905ad4560712301ceef7b64a2a2f63dfaa3827992458b060d3e5af9974d?placeholderIfAbsent=true&apiKey=ffa2a82c189543c9a5b1ca2ce6c57044" class="w-8 h-8" alt="Icon 1" />
+            <!-- Nouvelle icône de lecture vidéo -->
+          </div>
+          <div class="flex items-center space-x-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div class="flex items-center space-x-4">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/7692bbd4f510a2081e164cd5e358705d7215a5b200875934dd18b59ca80c9abf?placeholderIfAbsent=true&apiKey=ffa2a82c189543c9a5b1ca2ce6c57044" class="w-6 h-6" alt="Menu" />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
-
 
 <script>
   function cardData() {
