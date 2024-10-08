@@ -1,0 +1,42 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Tailwind CSS build files
+dist/
+build/
+*.css
+*.css.map
+
+# Parcel or other bundler files (if used)
+.cache/
+.parcel-cache/
+
+# Logs
+logs/
+*.log
+yarn-debug.log*
+yarn-error.log*
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS system files
+.DS_Store
+
+# Linux system files
+*.swp
+
+# IDE specific files
+.vscode/
+.idea/
+*.iml

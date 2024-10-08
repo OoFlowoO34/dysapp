@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <link href="./css/index.scss" type="text/css" rel="stylesheet">
+
+  <title>Alpine Tailwind DaisyUI Boilerplate</title>
+</head>
+<body class="bg-gray-900 text-white" data-theme="dark">
+  <div class="app flex flex-col w-screen h-screen p-6" x-data>
+    <include src="src/views/header.html"></include> 
+    <div class="flex-1 flex flex-col gap-2 justify-center items-center">
+        <div>
+          <include src="src/views/page.html"></include> 
+        </div>
+    </div>
+    <include src="src/views/notifications.html"></include> 
+  </div>
+  <script type="module" src="./js/index.ts"></script>
+</body>
+</html>

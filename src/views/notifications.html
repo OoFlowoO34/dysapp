@@ -1,0 +1,7 @@
+<div class="toast alert-error alert-info alert-primary alert-secondary alert-accent">
+  <template x-for="notif in $store.layout.notifs" x-transition>
+    <div class="alert" :class="notif.type ? `alert-${notif.type}` : 'bg-orange-600 text-white'">
+      <span x-text="notif.text"></span>
+    </div>
+  </template>
+</div>
