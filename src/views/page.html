@@ -1,27 +1,18 @@
-<!-- <div x-data>
 
-  <template x-if="$store.layout.view === 'index'">
-    <div class="max-w-[1200px]">
-      Hello world
-    </div>
-  </template>
-  
-  <template x-if="$store.layout.view === 'contact'">
-    <div class="max-w-[1200px]">
-      <div class="bg-neutral rounded-box p-4 w-screen mx-auto flex flex-col gap-4" style="height: calc(100vh - 24px - 24px - 38px - 24px); max-width: calc(100% - 48px);">
-        <include src="src/views/contact/index.html"></include>
-      </div>
-    </div>
-  </template>
-</div> -->
-
-
-<div x-data="cardData()" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div x-data="gameData()" class="grid grid-cols-1 md:grid-cols-3 gap-6">
   <!-- Boucle sur les données -->
-  <template x-for="item in data" :key="item.id">
-    <div class="card w-full bg-white shadow-xl" :class="'border-' + item.color">
+  <template x-for="item in games" :key="item.id">
+    <div class="card w-full shadow-xl" :style="{ backgroundColor: '#' + item.color }">
       <figure class="p-4">
-        <img :src="item.image" alt="image" class="w-full h-48 object-cover rounded-md">
+        <!-- <img src="./assets/pirate-image.png" alt=""> -->
+        <img x-bind:src="`./assets/${item.color}`" alt="" style="height:550px">
+        <img :src="$imgpirate + pirate-image.png" />
+        <img :src="`./assets/  imgpirate`" />
+        <img :src="`../${item.image}`" />
+
+        <p x-text="imgpirate"></p>
+        <img :src="'./assets/' + item.image" />
+        <p x-text="item.image"></p>
       </figure>
       <div class="card-body p-4">
         <h2 class="card-title text-lg font-bold" x-text="item.name"></h2>
@@ -31,39 +22,26 @@
   </template>
 </div>
 
-
 <script>
-  function cardData() {
+  function gameData() {
     return {
-      data: [
-        {
-          "id": 2,
-          "date_created": "2024-10-08T09:43:53.320Z",
-          "date_updated": "2024-10-08T09:44:40.724Z",
-          "name": "Pirate à bord !",
-          "description": "Aide un pirate à trouver un trésor en prononçant correctement des sons ou des mots difficiles !",
-          "image": "pirate-image.png",
-          "color": "blue"
-        },
-        {
-          "id": 3,
-          "date_created": "2024-10-08T09:46:45.478Z",
-          "date_updated": null,
-          "name": "La voix de la jungle ",
-          "description": "Aider des animaux à retrouver leur voix en répétant des phrases ou des sons correctement",
-          "image": "jungle-image.png",
-          "color": "red"
-        },
-        {
-          "id": 4,
-          "date_created": "2024-10-08T09:47:26.987Z",
-          "date_updated": null,
-          "name": "Le roi des rimes",
-          "description": "Protéger le château en trouvant des mots qui riment avec ceux proposés",
-          "image": "roi-image.png",
-          "color": "yellow"
-        }
-      ]
+      games: [],
+      imgpirate: './assets/',
+
+      init() {
+        // Effectuer une requête GET avec Axios
+        axios.get('http://ec2-13-50-5-24.eu-north-1.compute.amazonaws.com:8055/items/games')
+          .then(response => {
+            // Mettre à jour les données avec la réponse
+            this.games = response.data.data; // Ajuste ceci si nécessaire
+            console.log(this.games)
+
+          })
+          .catch(error => {
+            console.error('Une erreur s\'est produite lors de la récupération des données:', error);
+          });
+
+      }
     }
   }
 </script>
